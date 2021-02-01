@@ -1,0 +1,8 @@
+# Goland folder should not be include in git repo
+.idea/
+
+# unignore all with extension
+!*.*
+#unignore directories
+!*/
+
