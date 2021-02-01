@@ -8,6 +8,10 @@ import (
 )
 
 var (
+	testTaskSet []*Task
+)
+
+func makeTestTaskSet() {
 	testTaskSet = []*Task{
 		NewTask(
 			"task 1",
@@ -24,10 +28,11 @@ var (
 			WithValue(ValueNeeded),
 		),
 	}
-)
+}
 
 func makeRootDir() string {
-	path := filepath.Join("/home/mlevieux/tmp", "taskmem")
+	tmpDir := os.TempDir()
+	path := filepath.Join(tmpDir, "taskmem")
 
 	err := os.RemoveAll(path)
 	if err != nil {
@@ -52,6 +57,7 @@ func TestFSMemory_SaveTask(t *testing.T) {
 }
 
 func insertTasks(t *testing.T, mem *FSMemory) {
+	makeTestTaskSet()
 	for _, task := range testTaskSet {
 		id, err := mem.SaveTask(task)
 		if err != nil {
@@ -59,6 +65,7 @@ func insertTasks(t *testing.T, mem *FSMemory) {
 		}
 
 		if id != mem.lastTaskId {
+			t.Log("LastTaskId =", mem.lastTaskId, "instead of", task.Id)
 			t.Fail()
 		}
 	}
@@ -107,7 +114,7 @@ func TestFSMemory_GetAllTasks(t *testing.T) {
 	}
 
 	if len(ts) != len(testTaskSet) {
-		litter.Dump(ts)
+		t.Log(litter.Sdump(ts))
 		t.Fail()
 	}
 }

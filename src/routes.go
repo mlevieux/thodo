@@ -3,7 +3,7 @@ package main
 import (
 	jsoniter "github.com/json-iterator/go"
 	"net/http"
-	"thodo/src/internal"
+	"github.com/mlevieux/thodo/src/internal"
 )
 
 type handler struct {

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"thodo/src/internal"
+	"github.com/mlevieux/thodo/src/internal"
 )
 
 func main() {

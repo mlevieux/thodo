@@ -87,6 +87,8 @@ func (fs *FSMemory) resolveTaskFilename(id int64) string {
 }
 
 func (fs *FSMemory) SaveTask(task *Task) (int64, error) {
+	log.Println("Saving task:", task)
+
 	taskBody, err := jsoniter.Marshal(task)
 	if err != nil {
 		return 0, err
