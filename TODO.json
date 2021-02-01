@@ -1,0 +1,26 @@
+{
+	"todos": [
+		{
+			"name": "add test file for todo",
+			"description": "todo creation and options are not tested at all and should be",
+			"hoursToImplement": 1
+		},
+		{
+			"name": "add simple frontend",
+			"description": "it'll enable easier and better testing",
+			"hoursToImplement": 3
+		},
+		{
+			"name": "add sql memory management",
+			"description": "so we can have shared resources later",
+			"hoursToImplement": 3,
+			"unlocks": [
+				{
+					"name": "install sql engine in docker image",
+					"description": "just so the image stays up to date with the rest of the project",
+					"hoursToImplement": 1
+				}
+			]
+		}
+	]
+}
