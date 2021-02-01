@@ -2,11 +2,11 @@ package main
 
 import (
 	"github.com/gorilla/mux"
+	"github.com/mlevieux/thodo/src/internal"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
-	"github.com/mlevieux/thodo/src/internal"
 )
 
 func main() {
