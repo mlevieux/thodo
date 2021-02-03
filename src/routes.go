@@ -3,6 +3,7 @@ package main
 import (
 	jsoniter "github.com/json-iterator/go"
 	"github.com/mlevieux/thodo/src/internal"
+	"github.com/mlevieux/thodo/src/internal/todo"
 	"net/http"
 )
 
@@ -37,7 +38,7 @@ func (h handler) postTask(w http.ResponseWriter, r *http.Request) {
 	case http.MethodPost:
 
 		var (
-			task = new(internal.Task)
+			task = new(todo.Task)
 		)
 
 		err := jsoniter.NewDecoder(r.Body).Decode(task)
@@ -46,7 +47,7 @@ func (h handler) postTask(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		task.Apply(internal.WithState(internal.StateTodo))
+		task.Apply(todo.WithState(todo.StateTodo))
 		id, err := h.mem.SaveTask(task)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)

@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/mlevieux/thodo/src/internal"
+	"github.com/mlevieux/thodo/src/internal/memory/fsmemory"
 	"log"
 	"net/http"
 	"os"
@@ -17,7 +17,7 @@ func main() {
 		panic(err)
 	}
 
-	mem, err := internal.NewFSMemory(filepath.Join(wd, ".tasks"))
+	mem, err := fsmemory.NewFSMemory(filepath.Join(wd, ".tasks"))
 	log.Println("Ho!")
 	if err != nil {
 		panic(err)

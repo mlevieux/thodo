@@ -1,6 +1,7 @@
-package internal
+package fsmemory
 
 import (
+	"github.com/mlevieux/thodo/src/internal/todo"
 	"github.com/sanity-io/litter"
 	"os"
 	"path/filepath"
@@ -8,24 +9,24 @@ import (
 )
 
 var (
-	testTaskSet []*Task
+	testTaskSet []*todo.Task
 )
 
 func makeTestTaskSet() {
-	testTaskSet = []*Task{
-		NewTask(
+	testTaskSet = []*todo.Task{
+		todo.NewTask(
 			"task 1",
-			WithDescription("some test task"),
-			WithPriority(PriorityNormal),
-			WithState(StateTodo),
-			WithValue(ValueNotEstimated),
+			todo.WithDescription("some test task"),
+			todo.WithPriority(todo.PriorityNormal),
+			todo.WithState(todo.StateTodo),
+			todo.WithValue(todo.ValueNotEstimated),
 		),
-		NewTask(
+		todo.NewTask(
 			"task 2",
-			WithDescription("some test task 2"),
-			WithPriority(PriorityVeryHigh),
-			WithState(StateDoing),
-			WithValue(ValueNeeded),
+			todo.WithDescription("some test task 2"),
+			todo.WithPriority(todo.PriorityVeryHigh),
+			todo.WithState(todo.StateDoing),
+			todo.WithValue(todo.ValueNeeded),
 		),
 	}
 }

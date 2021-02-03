@@ -1,7 +1,8 @@
-package internal
+package fsmemory
 
 import (
 	jsoniter "github.com/json-iterator/go"
+	"github.com/mlevieux/thodo/src/internal/todo"
 	"io/ioutil"
 	"log"
 	"os"
@@ -86,7 +87,7 @@ func (fs *FSMemory) resolveTaskFilename(id int64) string {
 	return filePath
 }
 
-func (fs *FSMemory) SaveTask(task *Task) (int64, error) {
+func (fs *FSMemory) SaveTask(task *todo.Task) (int64, error) {
 	log.Println("Saving task:", task)
 
 	taskBody, err := jsoniter.Marshal(task)
@@ -105,17 +106,17 @@ func (fs *FSMemory) SaveTask(task *Task) (int64, error) {
 	return task.Id, err
 }
 
-func (fs *FSMemory) GetTask(id int64) (*Task, error) {
+func (fs *FSMemory) GetTask(id int64) (*todo.Task, error) {
 
 	payload, err := ioutil.ReadFile(fs.resolveTaskFilename(id))
 	if err != nil {
 		return nil, err
 	}
 
-	return newTaskFromPayload(id, payload)
+	return todo.NewTaskFromPayload(id, payload)
 }
 
-func (fs *FSMemory) GetAllTasks() ([]*Task, error) {
+func (fs *FSMemory) GetAllTasks() ([]*todo.Task, error) {
 	absTaskDir := filepath.Join(fs.rootDir, tasksDir)
 
 	log.Println("Reading:", absTaskDir)
@@ -124,7 +125,7 @@ func (fs *FSMemory) GetAllTasks() ([]*Task, error) {
 		return nil, err
 	}
 
-	tasks := make([]*Task, 0, len(dirInfo))
+	tasks := make([]*todo.Task, 0, len(dirInfo))
 	for _, fileInfo := range dirInfo {
 		filename := fileInfo.Name()
 		// any case where there could NOT be a dot in the filename?
@@ -141,7 +142,7 @@ func (fs *FSMemory) GetAllTasks() ([]*Task, error) {
 			continue
 		}
 
-		task, err := newTaskFromPayload(taskId, payload)
+		task, err := todo.NewTaskFromPayload(taskId, payload)
 		if err != nil {
 			log.Println(err)
 			continue

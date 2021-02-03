@@ -1,4 +1,4 @@
-package internal
+package todo
 
 import (
 	jsoniter "github.com/json-iterator/go"
@@ -114,7 +114,7 @@ func (task *Task) Apply(opts ...TaskOption) {
 	}
 }
 
-func newTaskFromPayload(id int64, payload []byte) (*Task, error) {
+func NewTaskFromPayload(id int64, payload []byte) (*Task, error) {
 	task := &Task{
 		Id: id,
 	}
