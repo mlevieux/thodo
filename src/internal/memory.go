@@ -1,7 +1,6 @@
 package internal
 
 import (
-	"github.com/mlevieux/thodo/src/internal/memory/fsmemory"
 	"github.com/mlevieux/thodo/src/internal/todo"
 )
 
@@ -11,7 +10,3 @@ type Memory interface {
 	GetTask(id int64) (*todo.Task, error)
 	DeleteTask(id int64) error
 }
-
-var (
-	_ Memory = &fsmemory.FSMemory{}
-)

@@ -2,6 +2,7 @@ package fsmemory
 
 import (
 	jsoniter "github.com/json-iterator/go"
+	"github.com/mlevieux/thodo/src/internal"
 	"github.com/mlevieux/thodo/src/internal/todo"
 	"io/ioutil"
 	"log"
@@ -24,6 +25,11 @@ type FSMemory struct {
 	mux        *sync.Mutex
 	lastTaskId int64
 }
+
+var (
+	_ internal.Memory = &FSMemory{}
+)
+
 
 func NewFSMemory(root string) (*FSMemory, error) {
 	fsMem := &FSMemory{
