@@ -9,9 +9,9 @@ RUN go get github.com/gorilla/mux
 RUN go get github.com/json-iterator/go
 
 WORKDIR /go/src/
-COPY src thodo/src
+COPY src github.com/mlevieux/thodo/src
 
-WORKDIR /go/src/thodo/src
+WORKDIR /go/src/github.com/mlevieux/thodo/src
 RUN go build -o thodo .
 
 EXPOSE 8080
