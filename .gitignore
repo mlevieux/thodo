@@ -7,4 +7,4 @@
 
 # Goland folder should not be include in git repo
 .idea
-
+vendor/
