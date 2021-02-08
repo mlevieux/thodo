@@ -2,8 +2,8 @@ package main
 
 import (
 	jsoniter "github.com/json-iterator/go"
-	"github.com/mlevieux/thodo/src/internal"
-	"github.com/mlevieux/thodo/src/internal/todo"
+	"github.com/mlevieux/thodo/back/internal"
+	"github.com/mlevieux/thodo/back/internal/todo"
 	"net/http"
 )
 

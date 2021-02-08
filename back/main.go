@@ -3,7 +3,7 @@ package main
 import (
 	"database/sql"
 	"github.com/gorilla/mux"
-	"github.com/mlevieux/thodo/src/internal/memory/fsmemory"
+	"github.com/mlevieux/thodo/back/internal/memory/fsmemory"
 	"log"
 	"net/http"
 	"os"

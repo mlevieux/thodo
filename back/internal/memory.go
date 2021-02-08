@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"github.com/mlevieux/thodo/src/internal/todo"
+	"github.com/mlevieux/thodo/back/internal/todo"
 )
 
 type TaskStore interface {

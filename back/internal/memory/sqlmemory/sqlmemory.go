@@ -3,8 +3,8 @@ package sqlmemory
 import (
 	"database/sql"
 	"fmt"
-	"github.com/mlevieux/thodo/src/internal"
-	"github.com/mlevieux/thodo/src/internal/todo"
+	"github.com/mlevieux/thodo/back/internal"
+	"github.com/mlevieux/thodo/back/internal/todo"
 	"time"
 )
 
